@@ -99,7 +99,6 @@ class OneSignalSdk(object):
             }]
         }
         """
-        # TODO need tests
         url = BASE_URL + ("/players?app_id=%s&limit=%s&offset=%s" % (app_id, limit, offset))
         headers = {
             'Content-Type': 'application/json',
