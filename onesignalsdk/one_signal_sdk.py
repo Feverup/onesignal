@@ -251,7 +251,6 @@ class OneSignalSdk(object):
         url = BASE_URL + "/apps?limit=300&offset=0"
         kwargs['name'] = app_name
         data = json.dumps(kwargs)
-        print 'Data', data
         return send_request(url, method='POST', headers=self.headers, data=data)
 
     def update_app(self, app_id, **kwargs):
@@ -325,7 +324,6 @@ class OneSignalSdk(object):
         }]
         """
         url = BASE_URL + "/apps"
-        print 'URL: ', url
         return send_request(url, method='GET', headers=self.headers)
 
     def get_app(self, app_id):
@@ -361,7 +359,6 @@ class OneSignalSdk(object):
         }
         """
         url = BASE_URL + "/apps/" + app_id
-        print 'URL: ', url
         return send_request(url, method='GET', headers=self.headers)
 
     def get_player(self, player_id):
