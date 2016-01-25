@@ -1,4 +1,4 @@
-# one-signal-python-sdk
+# OneSignal Python SDK
 A Python SDK for OneSignal (https://onesignal.com/). Documentation for OneSignal API is available at
 https://documentation.onesignal.com/docs/server-api-overview.
 
