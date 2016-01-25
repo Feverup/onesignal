@@ -30,8 +30,6 @@ import requests
 
 
 BASE_URL = 'https://onesignal.com/api/v1'
-GET_TALENT_ICON_URL = "http://cdn.designcrowd.com.s3.amazonaws.com/blog/Oct2012/" \
-                      "52-Startup-Logos-2012/SLR_0040_gettalent.jpg"
 
 def send_request(url, method='GET', data=None, headers=None):
     """
