@@ -6,7 +6,7 @@ https://documentation.onesignal.com/docs/server-api-overview.
 
 See details here https://documentation.onesignal.com/docs/server-api-overview
 
-# Installing dependencies
+## Installing dependencies
 
 Create a VirtualEnv and install dependencies from requirements.txt by running (from the root):
 
