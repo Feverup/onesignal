@@ -1,8 +1,9 @@
 """
-Author: Zohaib Ijaz <mzohaib.qc@gmail.com>
+Author: Zohaib Ijaz <mzohaib.qc@gmail.com> and Waqas Younas <waqas.younas@gmail.com>
 """
 import datetime
-import one_signal_sdk
+import hashlib
+from onesignalsdk import one_signal_sdk
 import pytest
 
 
@@ -32,3 +33,15 @@ def app(one_signal_obj):
     params = dict(apns_env='sandbox')
     app_name = dt_now().strftime(dt_format)
     return one_signal_obj.create_app(app_name, **params).json()
+
+@pytest.fixture()
+def player(one_signal_obj, app):
+    dt_now = datetime.datetime.now
+    dt_format = "%d%m%Y%H%M%S%f"
+    random_str = hashlib.sha256(dt_now().strftime(dt_format)).hexdigest()
+    device_type = 0 # denotes iOS
+    params = dict(
+        identifier=random_str, language='en', device_os='7.0',
+        device_model='iPhone'
+    )
+    return one_signal_obj.create_player(app['id'], device_type, **params).json()
