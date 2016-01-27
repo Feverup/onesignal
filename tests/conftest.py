@@ -7,14 +7,15 @@ from onesignalsdk import one_signal_sdk
 import pytest
 
 
-
 APP_ID = '3f373607-3ebb-413c-90fb-becfdd3bb2c5'
 AUTH_TOKEN = 'YjcyZTcxNGUtYjRhZi00N2U4LWEwZjktNTZkOGVmNzM0ZWRh'
 BASE_URL = 'http://onesignal.com/api/v1'
 
+
 @pytest.fixture()
 def one_signal_obj():
-   return one_signal_sdk.OneSignalSdk(APP_ID, AUTH_TOKEN)
+    return one_signal_sdk.OneSignalSdk(AUTH_TOKEN, APP_ID)
+
 
 @pytest.fixture()
 def app(one_signal_obj):
@@ -28,14 +29,17 @@ def app(one_signal_obj):
         "gcm_key": "a gcm push key"
     }
     """
-    dt_now = datetime.datetime.now
-    dt_format = "%d%m%Y%H%M%S%f"
-    params = dict(apns_env='sandbox')
-    app_name = dt_now().strftime(dt_format)
-    return one_signal_obj.create_app(app_name, **params).json()
+    # dt_now = datetime.datetime.now
+    # dt_format = "%d%m%Y%H%M%S%f"
+    # params = dict(apns_env='sandbox')
+    # app_name = dt_now().strftime(dt_format)
+    # return one_signal_obj.create_app(app_name, **params).json()
+    # TODO: Find a way to create a new app and then delete it
+    return one_signal_obj.get_app().json()
+
 
 @pytest.fixture()
-def player(one_signal_obj, app):
+def player(one_signal_obj):
     dt_now = datetime.datetime.now
     dt_format = "%d%m%Y%H%M%S%f"
     random_str = hashlib.sha256(dt_now().strftime(dt_format)).hexdigest()
@@ -44,4 +48,4 @@ def player(one_signal_obj, app):
         identifier=random_str, language='en', device_os='7.0',
         device_model='iPhone'
     )
-    return one_signal_obj.create_player(app['id'], device_type, **params).json()
+    return one_signal_obj.create_player(device_type, **params).json()
