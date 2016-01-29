@@ -1,10 +1,6 @@
 """
 Contains tests for OneSignal's Python API
 """
-APP_ID = '3f373607-3ebb-413c-90fb-becfdd3bb2c5'
-AUTH_TOKEN = 'YjcyZTcxNGUtYjRhZi00N2U4LWEwZjktNTZkOGVmNzM0ZWRh'
-BASE_URL = 'http://onesignal.com/api/v1'
-
 
 class Test_OneSignal_SDK(object):
 
