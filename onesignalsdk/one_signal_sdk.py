@@ -42,6 +42,7 @@ class OneSignalSdk(object):
         then clicking "API Keys" from the top right menu.
         :param app_id: You get an app_id once you are done creating an app using OneSignal's API,
         or you can pass app_id if there is already one.
+        :param version: Version of the OneSignal API
         :return:
         """
         self.app_id = app_id
@@ -50,6 +51,10 @@ class OneSignalSdk(object):
         self.api_url = BASE_URL + version
 
     def get_headers(self):
+        """
+        Gets the header to be used in subsequent calls.
+        :return:
+        """
         headers = {
             "Content-Type": "application/json",
             "Authorization": "Basic %s" % self.user_auth_key
@@ -64,8 +69,8 @@ class OneSignalSdk(object):
         This endpoint requires Auth Key in header.
 
         :param app_auth_key: Each OneSignal App has a 'basic_auth_key'
-        :param limit:
-        :param offset:
+        :param limit: Number of devices to return. Both max and default is 300.
+        :param offset: Reset offset and default is 0.
         :return: Returns HTTP response object which contains a response that, per docs, looks like:
 
         .. Response::
@@ -108,7 +113,7 @@ class OneSignalSdk(object):
     def get_player(self, player_id):
         """
         It takes data from this endpoint: https://onesignal.com/api/v1/players/:id
-        :param player_id:
+        :param player_id: ID of the player
         :return: Returns HTTP response object which contains a response that, per docs, looks like
 
         .. Response::
@@ -147,6 +152,9 @@ class OneSignalSdk(object):
     def create_player(self, device_type, app_id=None, **kwargs):
         """
         Sends a POST request to https://onesignal.com/api/v1/players to create a player.
+        :param device_type: Required parameter to create a device. 0 = iOS, 1 = Android, 2 = Amazon,
+            3 = WindowsPhone(MPNS), 4 = ChromeApp, 5 = ChromeWebsite, 6 = WindowsPhone(WNS), 7 = Safari,
+            8 = Firefox
         :param app_id: OneSignal's app_id
         :param device_type: Required parameter to create a device. 0 = iOS, 1 = Android, 2 = Amazon,
         3 = WindowsPhone(MPNS), 4 = ChromeApp, 5 = ChromeWebsite, 6 = WindowsPhone(WNS), 7 = Safari,
@@ -332,30 +340,30 @@ class OneSignalSdk(object):
         .. Response:
 
             {
-                    id: "e4e87830-b954-11e3-811d-f3b376925f15",
-                    name: "Your app 1",
-                    players: 0,
-                    messagable_players: 0,
-                    updated_at: "2014-04-01T04:20:02.003Z",
-                    created_at: "2014-04-01T04:20:02.003Z",
-                    gcm_key: "a gcm push key",
-                    chrome_key: "A Chrome Web Push GCM key",
-                    chrome_web_origin: "Chrome Web Push Site URL",
-                    chrome_web_gcm_sender_id: "Chrome Web Push GCM Sender ID",
-                    chrome_web_default_notification_icon: "http://yoursite.com/chrome_notification_icon",
-                    chrome_web_sub_domain: "your_site_name",
-                    apns_env: "sandbox",
-                    apns_certificates: "Your apns certificate",
-                    safari_apns_cetificate: "Your Safari APNS certificate",
-                    safari_site_origin: "The homename for your website for Safari Push, including http or https",
-                    safari_push_id: "The certificate bundle ID for Safari Web Push",
-                    safari_icon_16_16: "http://onesignal.com/safari_packages/e4e87830-b954-11e3-811d-f3b376925f15/16x16.png",
-                    safari_icon_32_32: "http://onesignal.com/safari_packages/e4e87830-b954-11e3-811d-f3b376925f15/16x16@2.png",
-                    safari_icon_64_64: "http://onesignal.com/safari_packages/e4e87830-b954-11e3-811d-f3b376925f15/32x32@2x.png",
-                    safari_icon_128_128: "http://onesignal.com/safari_packages/e4e87830-b954-11e3-811d-f3b376925f15/128x128.png",
-                    safari_icon_256_256: "http://onesignal.com/safari_packages/e4e87830-b954-11e3-811d-f3b376925f15/128x128@2x.png",
-                    site_name: "The URL to your website for Web Push",
-                    basic_auth_key: "NGEwMGZmMjItY2NkNy0xMWUzLTk5ZDUtMDAwYzI5NDBlNjJj"
+                id: "e4e87830-b954-11e3-811d-f3b376925f15",
+                name: "Your app 1",
+                players: 0,
+                messagable_players: 0,
+                updated_at: "2014-04-01T04:20:02.003Z",
+                created_at: "2014-04-01T04:20:02.003Z",
+                gcm_key: "a gcm push key",
+                chrome_key: "A Chrome Web Push GCM key",
+                chrome_web_origin: "Chrome Web Push Site URL",
+                chrome_web_gcm_sender_id: "Chrome Web Push GCM Sender ID",
+                chrome_web_default_notification_icon: "http://yoursite.com/chrome_notification_icon",
+                chrome_web_sub_domain: "your_site_name",
+                apns_env: "sandbox",
+                apns_certificates: "Your apns certificate",
+                safari_apns_cetificate: "Your Safari APNS certificate",
+                safari_site_origin: "The homename for your website for Safari Push, including http or https",
+                safari_push_id: "The certificate bundle ID for Safari Web Push",
+                safari_icon_16_16: "http://onesignal.com/safari_packages/e4e87830-b954-11e3-811d-f3b376925f15/16x16.png",
+                safari_icon_32_32: "http://onesignal.com/safari_packages/e4e87830-b954-11e3-811d-f3b376925f15/16x16@2.png",
+                safari_icon_64_64: "http://onesignal.com/safari_packages/e4e87830-b954-11e3-811d-f3b376925f15/32x32@2x.png",
+                safari_icon_128_128: "http://onesignal.com/safari_packages/e4e87830-b954-11e3-811d-f3b376925f15/128x128.png",
+                safari_icon_256_256: "http://onesignal.com/safari_packages/e4e87830-b954-11e3-811d-f3b376925f15/128x128@2x.png",
+                site_name: "The URL to your website for Web Push",
+                basic_auth_key: "NGEwMGZmMjItY2NkNy0xMWUzLTk5ZDUtMDAwYzI5NDBlNjJj"
             }
         """
         url = self.api_url + "/apps"
@@ -487,42 +495,12 @@ class OneSignalSdk(object):
                   site_name: "The URL to your website for Web Push",
                   basic_auth_key: "NGEwMGZmMjItY2NkNy0xMWUzLTk5ZDUtMDAwYzI5NDBlNjJj"
             }
+
         """
         app_id = app_id if app_id else self.app_id
         url = self.api_url + "/apps/" + app_id
         return send_request(url, method='GET', headers=self.get_headers())
 
-    def get_player(self, player_id):
-        """
-        Gets a player by sending a GET to https://onesignal.com/api/v1/players/:id
-        :param _id: Player's id
-        :return: Returns HTTP response object which contains a response that, per docs, looks like:
-
-        .. Response::
-
-        {
-            "identifier": "ce777617da7f548fe7a9ab6febb56cf39fba6d382000c0395666288d961ee566",
-            "session_count": 1,
-            "language": "en",
-            "timezone": -28800,
-            "game_version": "1.0",
-            "device_os": "7.0.4",
-            "device_type": 0,
-            "device_model": "iPhone",
-            "ad_id": null,
-            "tags": {
-                "a": "1",
-                "foo": "bar"
-            },
-            "last_active": 1395096859,
-            "amount_spent": "0",
-            "created_at": 1395096859,
-            "invalid_identifier": false,
-            "badge_count": 0
-        }
-        """
-        url = self.api_url + "/players/" + player_id
-        return send_request(url, method='GET')
 
     def export_players_to_csv(self, app_auth_key, app_id=None):
         """
@@ -559,7 +537,8 @@ class OneSignalSdk(object):
         :param contents: Contents of the message
         :param player_ids: list of player_ids to whom we specifically want to send notifications
         :param included_segments: segments to be included to send push notification
-        :param kwargs: There can be more arguments as given on https://documentation.onesignal.com/docs/notifications-create-notification
+        :param kwargs: There can be more arguments as given on
+        https://documentation.onesignal.com/docs/notifications-create-notification
         :return: Returns a HTTP response object which, per docs, will contain response like:
 
         .. Response::

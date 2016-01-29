@@ -29,13 +29,11 @@ def app(one_signal_obj):
         "gcm_key": "a gcm push key"
     }
     """
-    # dt_now = datetime.datetime.now
-    # dt_format = "%d%m%Y%H%M%S%f"
-    # params = dict(apns_env='sandbox')
-    # app_name = dt_now().strftime(dt_format)
-    # return one_signal_obj.create_app(app_name, **params).json()
-    # TODO: Find a way to create a new app and then delete it
-    return one_signal_obj.get_app().json()
+    dt_now = datetime.datetime.now
+    dt_format = "%d%m%Y%H%M%S%f"
+    params = dict(apns_env='sandbox')
+    app_name = dt_now().strftime(dt_format)
+    return one_signal_obj.create_app(app_name, **params).json()
 
 
 @pytest.fixture()
