@@ -501,7 +501,6 @@ class OneSignalSdk(object):
         url = self.api_url + "/apps/" + app_id
         return send_request(url, method='GET', headers=self.get_headers())
 
-
     def export_players_to_csv(self, app_auth_key, app_id=None):
         """
         Sends a GET to https://onesignal.com/api/v1/players/csv_export?app_id=:app_id and in

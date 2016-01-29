@@ -2,6 +2,7 @@
 Contains tests for OneSignal's Python API
 """
 
+
 class Test_OneSignal_SDK(object):
 
     def test_auth(self, one_signal_obj):
@@ -193,8 +194,4 @@ class Test_OneSignal_SDK(object):
         assert response.status_code == 400
         notification_data = response.json()
         assert notification_data['errors'][0] == 'Notification has already been sent to all recipients'
-
-
-
-
 
