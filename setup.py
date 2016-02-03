@@ -5,7 +5,7 @@ from distutils.core import setup
 setup(
     name='OneSignalSDK',
     packages=find_packages(exclude=['tests*']), # this must be the same as the name above
-    version='0.1',
+    version='0.1.1',
     description='A Python SDK for OneSignal (http://onesignal.com)',
     author='Waqas Younas, Zohaib Ijaz',
     author_email='waqas.younas@gmail.com, mzohaib.qc@gmail.com',
