@@ -1,16 +1,21 @@
-
 from setuptools import find_packages
 from distutils.core import setup
 
+
+def readme():
+    with open('README.rst') as f:
+        return f.read()
+
 setup(
-    name='OneSignalSDK',
-    packages=find_packages(exclude=['tests*']), # this must be the same as the name above
-    version='0.1.1',
+    name='OneSignalPythonSDK',
+    packages=find_packages(exclude=['tests*']),
+    version='0.1',
     description='A Python SDK for OneSignal (http://onesignal.com)',
+    long_description=readme(),
     author='Waqas Younas, Zohaib Ijaz',
     author_email='waqas.younas@gmail.com, mzohaib.qc@gmail.com',
-    url='https://github.com/gettalent/one-signal-python-sdk', # use the URL to the github repo
-    keywords=['onesignal', 'onesignalsdk', 'sdk'], # arbitrary keywords
+    url='https://github.com/gettalent/one-signal-python-sdk',
+    keywords=['onesignal', 'onesignalsdk', 'sdk'],
     install_requires=[
         'requests',
         'pytest'
