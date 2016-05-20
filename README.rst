@@ -9,16 +9,12 @@ Obtaining User Rest API key and App REST API key
 
 See details here https://documentation.onesignal.com/docs/server-api-overview
 
-Installing dependencies
+Install from pip
 ------------------------
 
-Create a VirtualEnv and install dependencies from requirements.txt by running (from the root):
+   > pip install onesignal 
 
-::
-
-   > pip install -r requirements.txt
-
-Setup
+Setup for develop
 ------
 
 You can install the package by running
