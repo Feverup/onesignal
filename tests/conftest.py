@@ -3,7 +3,7 @@ Author: Zohaib Ijaz <mzohaib.qc@gmail.com> and Waqas Younas <waqas.younas@gmail.
 """
 import datetime
 import hashlib
-from onesignalsdk import one_signal_sdk
+from onesignal import OneSignal 
 import pytest
 
 
@@ -14,7 +14,7 @@ BASE_URL = 'http://onesignal.com/api/v1'
 
 @pytest.fixture()
 def one_signal_obj():
-    return one_signal_sdk.OneSignalSdk(AUTH_TOKEN, APP_ID)
+    return OneSignal(AUTH_TOKEN, APP_ID)
 
 
 @pytest.fixture()

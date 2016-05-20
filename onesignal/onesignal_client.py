@@ -33,7 +33,7 @@ import requests
 BASE_URL = 'https://onesignal.com/api/'
 
 
-class OneSignalSdk(object):
+class OneSignal(object):
 
     def __init__(self, user_auth_key, app_id=None, version='v1'):
         """
