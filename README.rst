@@ -31,8 +31,11 @@ Once installed, to get started, you can do:
    one_signal =  OneSignal(USER_AUTH_KEY, YOUR_APP_ID)
    one_signal.get_players(REST_API_KEY)
    
-USER_AUTH_KEY: Your e-mail -> Api Keys -> User Auth Key 
+   
+USER_AUTH_KEY: Your e-mail -> Api Keys -> User Auth Key
+
 YOUR_APP_ID: Your App -> App settings -> Keys and Id
+
 REST_API_KEY: Your App -> App settings -> Keys and Id
 
 Tests
