@@ -560,6 +560,8 @@ class OneSignal(object):
 
         if player_ids and isinstance(player_ids, (list, tuple)):
             data['include_player_ids'] = player_ids
+        elif 'tags' in kwargs and isinstance(kwargs['tags'], list):
+                data['tags'] = kwargs['tags']
         elif isinstance(included_segments, (list, tuple)) and len(included_segments):
             data['included_segments'] = included_segments
 
