@@ -9,7 +9,7 @@ def readme():
 setup(
     name='onesignal',
     packages=find_packages(exclude=['tests*']),
-    version='0.1',
+    version='0.1.3',
     description='A Python wrapper for OneSignal API (http://onesignal.com)',
     long_description=readme(),
     author='Waqas Younas, Zohaib Ijaz, Ismael de Esteban',
